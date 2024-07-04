@@ -3,7 +3,7 @@ class AppStrings {
   static const String fontFamily = 'Satoshi';
 
   // get started
-  static const String enjoy = 'Enjoy listening to Music';
+  static const String enjoy = 'Enjoy Listening To Music';
   static const String getStarted = 'Get Started';
   static const String getStartedText =
       'Thank you for choosing Spotify, your ultimate music companion! Follow these simple steps to get started and dive into a world of endless music.';
@@ -18,6 +18,12 @@ class AppStrings {
   static const String light = 'light';
   static const String dark = 'dark';
 
+  // sign in or sign up
   static const String signInText =
       'Spotify is a proprietary Swedish audio\n streaming and media services provider';
+  static const String signIn = 'Sign In';
+  static const String register = 'Register';
+  static const String signInOrSignUp = 'Sign In or Sign Up';
+  static const String signInOrSignUpText =
+      'To continue, sign in or sign up with your Spotify account.';
 }

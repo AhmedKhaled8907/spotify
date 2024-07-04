@@ -155,3 +155,18 @@ class AppSelectedIndex {
   static const int i10 = 10;
   static const int i11 = 11;
 }
+
+class AppFlex {
+  static const int f1 = 1;
+  static const int f2 = 2;
+  static const int f3 = 3;
+  static const int f4 = 4;
+  static const int f5 = 5;
+  static const int f6 = 6;
+  static const int f7 = 7;
+  static const int f8 = 8;
+  static const int f9 = 9;
+  static const int f10 = 10;
+  static const int f11 = 11;
+  static const int f12 = 12;
+}

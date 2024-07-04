@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:spotify/features/presentation/pages/auth/pages/signin_or_singup.dart';
 import 'package:spotify/features/presentation/pages/choose_mode/bloc/theme_cubit.dart';
 import 'package:spotify/features/presentation/pages/choose_mode/widgets/choose_mode_item.dart';
 
@@ -100,9 +101,9 @@ class ChooseModePage extends StatelessWidget {
                     title: AppStrings.continueBtn,
                     onPressed: () {
                       // TODO: navigate to Sign In
-                      Navigator.of(context).pushReplacement(
+                      Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const ChooseModePage(),
+                          builder: (context) => const SignInOrSignUpPage(),
                         ),
                       );
                     },
