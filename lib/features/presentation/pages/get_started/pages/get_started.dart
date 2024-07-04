@@ -1,16 +1,15 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:spotify/features/presentation/pages/choose_mode.dart/choose_mode_item.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:spotify/core/utils/resources/color_manager.dart';
+import 'package:spotify/core/utils/resources/strings_manager.dart';
 
-import '../../../../core/utils/constants/assets.dart';
-import '../../../../core/utils/resources/color_manager.dart';
-import '../../../../core/utils/resources/strings_manager.dart';
-import '../../../../core/utils/resources/values_manager.dart';
-import '../../../../core/utils/widgets/basic_app_button.dart';
+import '../../../../../core/utils/constants/assets.dart';
+import '../../../../../core/utils/resources/values_manager.dart';
+import '../../../../../core/utils/widgets/basic_app_button.dart';
+import '../../choose_mode/pages/choose_mode.dart';
 
-class ChooseModePage extends StatelessWidget {
-  const ChooseModePage({super.key});
+class GetStartedPage extends StatelessWidget {
+  const GetStartedPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class ChooseModePage extends StatelessWidget {
             child: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(Assets.imagesChooseModeBg),
+                  image: AssetImage(Assets.imagesIntroBg),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -39,7 +38,7 @@ class ChooseModePage extends StatelessWidget {
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: AppSize.s36,
+                horizontal: AppSize.s40,
               ).copyWith(
                 bottom: AppPadding.p64,
               ),
@@ -56,41 +55,32 @@ class ChooseModePage extends StatelessWidget {
                   ),
                   const Spacer(),
 
-                  // choose mode
+                  // enjoy text
                   Text(
-                    AppStrings.chooseMode,
+                    AppStrings.enjoy,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.displayLarge!.copyWith(
                           color: AppColors.white,
                         ),
                   ),
-                  const SizedBox(height: AppSize.s48),
+                  const SizedBox(height: AppSize.s24),
 
                   // get started text
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      ChooseModeItem(
-                        image: Assets.vectorsSun,
-                        title: AppStrings.lightMode,
-                        onTap: () {},
-                      ),
-                      ChooseModeItem(
-                        image: Assets.vectorsMoon,
-                        title: AppStrings.darkMode,
-                        onTap: () {},
-                      ),
-                    ],
+                  Text(
+                    AppStrings.getStartedText,
+                    textAlign: TextAlign.center,
+                    maxLines: AppSize.s5.toInt(),
+                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                          color: AppColors.grey,
+                        ),
                   ),
-
-                  const SizedBox(height: AppSize.s48),
+                  const SizedBox(height: AppSize.s36),
 
                   // get started button
                   BasicAppButton(
-                    title: AppStrings.continueBtn,
+                    title: AppStrings.getStarted,
                     onPressed: () {
-                      // TODO: navigate to Sign In
+                      // TODO: navigate to CHOSE MODE
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
                           builder: (context) => const ChooseModePage(),
@@ -107,4 +97,3 @@ class ChooseModePage extends StatelessWidget {
     );
   }
 }
-
