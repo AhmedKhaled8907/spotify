@@ -10,8 +10,9 @@ class AppColors {
   static const Color darkGrey = Color(0xff343434);
   static const Color lightGrey = Color(0xffB7B7B7);
   static Color greyWithOp = Colors.grey.withOpacity(0.3);
-  static const Color white = Colors.white;
+  static const Color white = Color(0xFFFFFFFF);
   static const Color black = Colors.black;
+  static Color filteredBg = const Color(0x0fffffff).withOpacity(AppSize.s0_03);
   static Color blackWithOp = Colors.black.withOpacity(AppSize.s0_15);
   static const Color transparent = Colors.transparent;
 }

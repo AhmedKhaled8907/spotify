@@ -81,6 +81,7 @@ ThemeData appTheme(BuildContext context) {
       displaySmall: getMediumStyle(
         context: context,
         fontSize: FontSize.s20,
+        color: AppColors.white,
       ),
 
       // headline large
@@ -211,7 +212,5 @@ ThemeData appTheme(BuildContext context) {
   //     ),
   //   ),
 
-
-  
   // );
 }

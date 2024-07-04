@@ -9,6 +9,7 @@ TextStyle _getTextStyle(
   FontWeight fontWeight,
   double letterSpacing,
   TextOverflow overflow,
+  Color? color,
 ) {
   return TextStyle(
     fontSize: responsiveFont,
@@ -16,6 +17,7 @@ TextStyle _getTextStyle(
     fontWeight: fontWeight,
     letterSpacing: letterSpacing,
     overflow: TextOverflow.ellipsis,
+    color: color,
   );
 }
 
@@ -25,6 +27,7 @@ TextStyle getRegularStyle({
   double fontSize = FontSize.s12,
   double letterSpacing = AppSize.s1,
   TextOverflow overflow = TextOverflow.ellipsis,
+  Color? color,
 }) {
   double responsiveFontSize = responsiveFont(
     context,
@@ -35,6 +38,7 @@ TextStyle getRegularStyle({
     FontWeightManager.regular,
     letterSpacing,
     overflow,
+    color,
   );
 }
 
@@ -45,6 +49,7 @@ TextStyle getMediumStyle({
   double fontSize = FontSize.s12,
   double letterSpacing = AppSize.s1,
   TextOverflow overflow = TextOverflow.ellipsis,
+  Color? color,
 }) {
   double responsiveFontSize = responsiveFont(
     context,
@@ -55,6 +60,7 @@ TextStyle getMediumStyle({
     FontWeightManager.medium,
     letterSpacing,
     overflow,
+    color,
   );
 }
 
@@ -65,6 +71,7 @@ TextStyle getLightStyle({
   double fontSize = FontSize.s12,
   double letterSpacing = AppSize.s1,
   TextOverflow overflow = TextOverflow.ellipsis,
+  Color? color,
 }) {
   double responsiveFontSize = responsiveFont(
     context,
@@ -75,6 +82,7 @@ TextStyle getLightStyle({
     FontWeightManager.light,
     letterSpacing,
     overflow,
+    color,
   );
 }
 
@@ -85,6 +93,7 @@ TextStyle getBoldStyle({
   double fontSize = FontSize.s12,
   double letterSpacing = AppSize.s1,
   TextOverflow overflow = TextOverflow.ellipsis,
+  Color? color,
 }) {
   double responsiveFontSize = responsiveFont(
     context,
@@ -95,6 +104,7 @@ TextStyle getBoldStyle({
     FontWeightManager.bold,
     letterSpacing,
     overflow,
+    color,
   );
 }
 
@@ -105,6 +115,7 @@ TextStyle getSemiBoldStyle({
   double fontSize = FontSize.s12,
   double letterSpacing = AppSize.s1,
   TextOverflow overflow = TextOverflow.ellipsis,
+  Color? color,
 }) {
   double responsiveFontSize = responsiveFont(
     context,
@@ -115,5 +126,6 @@ TextStyle getSemiBoldStyle({
     FontWeightManager.semiBold,
     letterSpacing,
     overflow,
+    color,
   );
 }

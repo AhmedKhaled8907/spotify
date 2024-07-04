@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spotify/core/utils/resources/values_manager.dart';
 
-import '../resources/color_manager.dart';
 
 class BasicAppButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -24,9 +23,7 @@ class BasicAppButton extends StatelessWidget {
       ),
       child: Text(
         title,
-        style: Theme.of(context).textTheme.displaySmall!.copyWith(
-              color: AppColors.white,
-            ),
+        style: Theme.of(context).textTheme.displaySmall,
       ),
     );
   }
