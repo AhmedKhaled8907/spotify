@@ -26,4 +26,16 @@ class AppStrings {
   static const String signInOrSignUp = 'Sign In or Sign Up';
   static const String signInOrSignUpText =
       'To continue, sign in or sign up with your Spotify account.';
+
+  // signup
+  static const String email = 'Email';
+  static const String fullName = 'Full Name';
+  static const String password = 'Password';
+  static const String signUp = 'Sign Up';
+  static const String support = ' If you need any support ';
+  static const String clickHere = 'click Here';
+  static const String createAccount = 'Create Account';
+  static const String haveAccount = 'Do you have an account?';
+  static const String or = 'Or';
+
 }

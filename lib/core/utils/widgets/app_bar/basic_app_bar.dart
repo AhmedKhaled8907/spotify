@@ -3,32 +3,50 @@ import 'package:spotify/core/utils/extensions/is_dark_mode.dart';
 import 'package:spotify/core/utils/resources/color_manager.dart';
 import 'package:spotify/core/utils/resources/values_manager.dart';
 
-class BasicAppBar extends StatelessWidget {
-  const BasicAppBar({super.key});
+class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const BasicAppBar({
+    super.key,
+    this.title,
+    this.hideBack = false,
+    this.action,
+    this.backgroundColor,
+  });
+
+  final Widget? title;
+  final Widget? action;
+  final Color? backgroundColor;
+  final bool hideBack;
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      leading: IconButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        icon: Container(
-          height: AppSize.s50,
-          width: AppSize.s50,
-          decoration: BoxDecoration(
-            color: context.isDarkMode
-                ? AppColors.blackBackBg
-                : AppColors.lightBackBg,
-            shape: BoxShape.circle,
-          ),
-          child: Icon(
-            Icons.arrow_back_ios_new,
-            size: AppSize.s16,
-            color: context.isDarkMode ? AppColors.white : AppColors.black,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: AppSize.s8),
+      child: AppBar(
+        title: title ?? const Text(''),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Container(
+            height: AppSize.s64,
+            width: AppSize.s64,
+            decoration: BoxDecoration(
+              color: context.isDarkMode
+                  ? AppColors.blackBackBg
+                  : AppColors.lightBackBg,
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              Icons.arrow_back_ios_new,
+              size: AppSize.s16,
+              color: context.isDarkMode ? AppColors.white : AppColors.black,
+            ),
           ),
         ),
       ),
     );
   }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

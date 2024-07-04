@@ -5,6 +5,8 @@ import 'package:spotify/core/utils/extensions/is_dark_mode.dart';
 import 'package:spotify/core/utils/widgets/app_bar/basic_app_bar.dart';
 import 'package:spotify/core/utils/widgets/basic_app_button.dart';
 import 'package:spotify/core/utils/widgets/basic_text_button.dart';
+import 'package:spotify/features/presentation/pages/auth/pages/signin.dart';
+import 'package:spotify/features/presentation/pages/auth/pages/signup.dart';
 
 import '../../../../../core/utils/resources/color_manager.dart';
 import '../../../../../core/utils/resources/strings_manager.dart';
@@ -73,10 +75,11 @@ class SignInOrSignUpPage extends StatelessWidget {
                     AppStrings.signInText,
                     textAlign: TextAlign.center,
                     maxLines: AppSize.s5.toInt(),
-                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                    style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                           color: context.isDarkMode
                               ? AppColors.grey
-                              : AppColors.darkGrey,
+                              : AppColors.medGrey.withOpacity(AppSize.s0_75),
+                          fontWeight: FontWeight.normal,
                         ),
                   ),
                   const SizedBox(height: AppSize.s36),
@@ -88,16 +91,28 @@ class SignInOrSignUpPage extends StatelessWidget {
                       Expanded(
                         flex: AppFlex.f1,
                         child: BasicAppButton(
-                          onPressed: () {},
                           title: AppStrings.register,
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const SignupPage(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                       const SizedBox(width: AppSize.s4),
                       Expanded(
                         flex: AppFlex.f1,
                         child: BasicTextButton(
-                          onPressed: () {},
                           title: AppStrings.signIn,
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const SigninPage(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],
