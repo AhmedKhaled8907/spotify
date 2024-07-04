@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spotify/core/utils/resources/values_manager.dart';
 
 class AppColors {
   static const Color primary = Color(0xff42C83C);
@@ -11,5 +12,6 @@ class AppColors {
   static Color greyWithOp = Colors.grey.withOpacity(0.3);
   static const Color white = Colors.white;
   static const Color black = Colors.black;
+  static Color blackWithOp = Colors.black.withOpacity(AppSize.s0_15);
   static const Color transparent = Colors.transparent;
 }

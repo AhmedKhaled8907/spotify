@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:spotify/core/utils/resources/strings_manager.dart';
 
 class FontConstants {
   /// ADD FONT FAMILY
-  static const String fontFamily = '';
+  static const String fontFamily = AppStrings.fontFamily;
 }
 
 class FontWeightManager {
@@ -18,6 +19,7 @@ class FontSize {
   static const double s10 = 10.0;
   static const double s12 = 12.0;
   static const double s14 = 14.0;
+  static const double s15 = 15.0;
   static const double s16 = 16.0;
   static const double s17 = 17.0;
   static const double s18 = 18.0;

@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppStrings.appName,
-      theme: AppTheme.lightTheme,
+      theme: appTheme(context),
       home: const SplashPage(),
     );
   }

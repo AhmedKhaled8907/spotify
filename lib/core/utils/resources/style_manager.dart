@@ -4,18 +4,15 @@ import 'package:spotify/core/utils/resources/values_manager.dart';
 
 import '../functions/responsive_font.dart';
 
-
 TextStyle _getTextStyle(
   double responsiveFont,
   FontWeight fontWeight,
-  Color color,
   double letterSpacing,
   TextOverflow overflow,
 ) {
   return TextStyle(
     fontSize: responsiveFont,
     fontFamily: FontConstants.fontFamily,
-    color: color,
     fontWeight: fontWeight,
     letterSpacing: letterSpacing,
     overflow: TextOverflow.ellipsis,
@@ -25,7 +22,6 @@ TextStyle _getTextStyle(
 // regular style
 TextStyle getRegularStyle({
   required BuildContext context,
-  required Color color,
   double fontSize = FontSize.s12,
   double letterSpacing = AppSize.s1,
   TextOverflow overflow = TextOverflow.ellipsis,
@@ -37,7 +33,6 @@ TextStyle getRegularStyle({
   return _getTextStyle(
     responsiveFontSize,
     FontWeightManager.regular,
-    color,
     letterSpacing,
     overflow,
   );
@@ -48,7 +43,6 @@ TextStyle getRegularStyle({
 TextStyle getMediumStyle({
   required BuildContext context,
   double fontSize = FontSize.s12,
-  required Color color,
   double letterSpacing = AppSize.s1,
   TextOverflow overflow = TextOverflow.ellipsis,
 }) {
@@ -59,7 +53,6 @@ TextStyle getMediumStyle({
   return _getTextStyle(
     responsiveFontSize,
     FontWeightManager.medium,
-    color,
     letterSpacing,
     overflow,
   );
@@ -70,7 +63,6 @@ TextStyle getMediumStyle({
 TextStyle getLightStyle({
   required BuildContext context,
   double fontSize = FontSize.s12,
-  required Color color,
   double letterSpacing = AppSize.s1,
   TextOverflow overflow = TextOverflow.ellipsis,
 }) {
@@ -81,7 +73,6 @@ TextStyle getLightStyle({
   return _getTextStyle(
     responsiveFontSize,
     FontWeightManager.light,
-    color,
     letterSpacing,
     overflow,
   );
@@ -92,7 +83,6 @@ TextStyle getLightStyle({
 TextStyle getBoldStyle({
   required BuildContext context,
   double fontSize = FontSize.s12,
-  required Color color,
   double letterSpacing = AppSize.s1,
   TextOverflow overflow = TextOverflow.ellipsis,
 }) {
@@ -103,7 +93,6 @@ TextStyle getBoldStyle({
   return _getTextStyle(
     responsiveFontSize,
     FontWeightManager.bold,
-    color,
     letterSpacing,
     overflow,
   );
@@ -114,7 +103,6 @@ TextStyle getBoldStyle({
 TextStyle getSemiBoldStyle({
   required BuildContext context,
   double fontSize = FontSize.s12,
-  required Color color,
   double letterSpacing = AppSize.s1,
   TextOverflow overflow = TextOverflow.ellipsis,
 }) {
@@ -125,7 +113,6 @@ TextStyle getSemiBoldStyle({
   return _getTextStyle(
     responsiveFontSize,
     FontWeightManager.semiBold,
-    color,
     letterSpacing,
     overflow,
   );
