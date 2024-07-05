@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:spotify/core/utils/extensions/is_dark_mode.dart';
 import 'package:spotify/core/utils/resources/color_manager.dart';
@@ -21,25 +22,28 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSize.s8),
-      child: AppBar(
-        title: title ?? const Text(''),
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Container(
-            height: AppSize.s64,
-            width: AppSize.s64,
-            decoration: BoxDecoration(
-              color: context.isDarkMode
-                  ? AppColors.blackBackBg
-                  : AppColors.lightBackBg,
-              shape: BoxShape.circle,
-            ),
-            child: Icon(
-              Icons.arrow_back_ios_new,
-              size: AppSize.s16,
-              color: context.isDarkMode ? AppColors.white : AppColors.black,
+      child: FadeInRight(
+        duration: const Duration(milliseconds: 500),
+        child: AppBar(
+          title: title ?? const Text(''),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Container(
+              height: AppSize.s64,
+              width: AppSize.s64,
+              decoration: BoxDecoration(
+                color: context.isDarkMode
+                    ? AppColors.blackBackBg
+                    : AppColors.lightBackBg,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.arrow_back_ios_new,
+                size: AppSize.s16,
+                color: context.isDarkMode ? AppColors.white : AppColors.black,
+              ),
             ),
           ),
         ),

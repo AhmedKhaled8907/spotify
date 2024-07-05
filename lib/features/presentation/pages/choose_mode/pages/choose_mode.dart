@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -18,99 +19,102 @@ class ChooseModePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          // background image
-          Align(
-            alignment: Alignment.topCenter,
-            child: Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(Assets.imagesChooseModeBg),
-                  fit: BoxFit.fill,
+      body: FadeInRight(
+        duration: const Duration(milliseconds: AppDuration.d500),
+        child: Stack(
+          children: [
+            // background image
+            Align(
+              alignment: Alignment.topCenter,
+              child: Container(
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(Assets.imagesChooseModeBg),
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ),
-          ),
 
-          // black overlay
-          context.isDarkMode
-              ? Container(color: AppColors.blackWithOp)
-              : Container(),
+            // black overlay
+            context.isDarkMode
+                ? Container(color: AppColors.blackWithOp)
+                : Container(),
 
-          // content section
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppSize.s36,
-              ).copyWith(
-                bottom: AppPadding.p64,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  // logo image
-                  Align(
-                    alignment: Alignment.center,
-                    child: SvgPicture.asset(
-                      Assets.vectorsSpotifyLogo,
+            // content section
+            SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSize.s36,
+                ).copyWith(
+                  bottom: AppPadding.p64,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    // logo image
+                    Align(
+                      alignment: Alignment.center,
+                      child: SvgPicture.asset(
+                        Assets.vectorsSpotifyLogo,
+                      ),
                     ),
-                  ),
-                  const Spacer(),
+                    const Spacer(),
 
-                  // choose mode
-                  Text(
-                    AppStrings.chooseMode,
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                          color: AppColors.white,
+                    // choose mode
+                    Text(
+                      AppStrings.chooseMode,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                            color: AppColors.white,
+                          ),
+                    ),
+                    const SizedBox(height: AppSize.s48),
+
+                    // get started text
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        ChooseModeItem(
+                          image: Assets.vectorsMoon,
+                          title: AppStrings.darkMode,
+                          onTap: () {
+                            context
+                                .read<ThemeCubit>()
+                                .updateTheme(ThemeMode.dark);
+                          },
                         ),
-                  ),
-                  const SizedBox(height: AppSize.s48),
+                        ChooseModeItem(
+                          image: Assets.vectorsSun,
+                          title: AppStrings.lightMode,
+                          onTap: () {
+                            context
+                                .read<ThemeCubit>()
+                                .updateTheme(ThemeMode.light);
+                          },
+                        ),
+                      ],
+                    ),
 
-                  // get started text
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      ChooseModeItem(
-                        image: Assets.vectorsMoon,
-                        title: AppStrings.darkMode,
-                        onTap: () {
-                          context
-                              .read<ThemeCubit>()
-                              .updateTheme(ThemeMode.dark);
-                        },
-                      ),
-                      ChooseModeItem(
-                        image: Assets.vectorsSun,
-                        title: AppStrings.lightMode,
-                        onTap: () {
-                          context
-                              .read<ThemeCubit>()
-                              .updateTheme(ThemeMode.light);
-                        },
-                      ),
-                    ],
-                  ),
+                    const SizedBox(height: AppSize.s48),
 
-                  const SizedBox(height: AppSize.s48),
-
-                  // get started button
-                  BasicAppButton(
-                    title: AppStrings.continueBtn,
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(
-                        AppRoutes.signinOrSignupRoute,
-                      );
-                    },
-                  ),
-                ],
+                    // get started button
+                    BasicAppButton(
+                      title: AppStrings.continueBtn,
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(
+                          AppRoutes.signinOrSignupRoute,
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
