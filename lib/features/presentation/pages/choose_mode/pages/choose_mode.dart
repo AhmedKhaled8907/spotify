@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:spotify/features/presentation/pages/auth/pages/signin_or_singup.dart';
+import 'package:spotify/core/utils/extensions/is_dark_mode.dart';
+import 'package:spotify/features/presentation/pages/auth/pages/signin_or_signup.dart';
 import 'package:spotify/features/presentation/pages/choose_mode/bloc/theme_cubit.dart';
 import 'package:spotify/features/presentation/pages/choose_mode/widgets/choose_mode_item.dart';
 
@@ -33,9 +34,9 @@ class ChooseModePage extends StatelessWidget {
           ),
 
           // black overlay
-          Container(
-            color: AppColors.blackWithOp,
-          ),
+          context.isDarkMode
+              ? Container(color: AppColors.blackWithOp)
+              : Container(),
 
           // content section
           SafeArea(
@@ -70,7 +71,7 @@ class ChooseModePage extends StatelessWidget {
 
                   // get started text
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       ChooseModeItem(

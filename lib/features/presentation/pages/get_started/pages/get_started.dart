@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:spotify/core/utils/resources/color_manager.dart';
+import 'package:spotify/core/utils/resources/font_manager.dart';
 import 'package:spotify/core/utils/resources/strings_manager.dart';
 
 import '../../../../../core/utils/constants/assets.dart';
@@ -61,6 +62,7 @@ class GetStartedPage extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.displayLarge!.copyWith(
                           color: AppColors.white,
+                          fontSize: FontSize.s24,
                         ),
                   ),
                   const SizedBox(height: AppSize.s24),

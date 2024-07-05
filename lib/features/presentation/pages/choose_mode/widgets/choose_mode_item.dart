@@ -47,7 +47,9 @@ class ChooseModeItem extends StatelessWidget {
           const SizedBox(height: AppSize.s16),
           Text(
             title,
-            style: Theme.of(context).textTheme.displaySmall,
+            style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                  color: AppColors.white,
+                ),
           ),
         ],
       ),

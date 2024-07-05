@@ -43,7 +43,7 @@ class SignupPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: AppSize.s24),
-              
+
               const SupportText(),
 
               const SizedBox(height: AppSize.s25),
@@ -79,14 +79,15 @@ class SignupPage extends StatelessWidget {
           children: [
             Text(
               AppStrings.haveAccount,
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
             TextButton(
               onPressed: () {},
               child: Text(
                 AppStrings.signIn,
-                style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                       color: AppColors.primary,
+                      fontWeight: FontWeight.bold,
                     ),
               ),
             ),

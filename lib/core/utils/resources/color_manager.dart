@@ -3,7 +3,7 @@ import 'package:spotify/core/utils/resources/values_manager.dart';
 
 class AppColors {
   static const Color primary = Color(0xff42C83C);
-  static const Color lightBackground = Color(0xffF2F2F2);
+  static const Color lightBackground = Color(0xFFE0DEDE);
   static const Color darkBackground = Color(0xff1C1B1B);
   static const Color grey = Color(0xffBEBEBE);
   static const Color medGrey = Color(0xff383838);
