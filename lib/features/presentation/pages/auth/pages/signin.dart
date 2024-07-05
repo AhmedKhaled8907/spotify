@@ -75,7 +75,7 @@ class SigninPage extends StatelessWidget {
 
                 // register button
                 BasicAppButton(
-                  title: AppStrings.createAccount,
+                  title: AppStrings.signIn,
                   onPressed: () {},
                 ),
 

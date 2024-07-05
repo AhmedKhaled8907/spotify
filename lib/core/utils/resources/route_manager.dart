@@ -7,6 +7,8 @@ import 'package:spotify/features/presentation/pages/choose_mode/pages/choose_mod
 import 'package:spotify/features/presentation/pages/get_started/pages/get_started.dart';
 import 'package:spotify/features/presentation/pages/splash/pages/splash.dart';
 
+import '../../../features/presentation/pages/root/pages/root.dart';
+
 class AppRoutes {
   static const String splashRoute = "/";
   static const String getStartedRoute = "/GetStarted";
@@ -14,6 +16,7 @@ class AppRoutes {
   static const String signinOrSignupRoute = "/signinOrSignup";
   static const String signinRoute = "/login";
   static const String signupRoute = "/signup";
+  static const String rootRoute = "/root";
 }
 
 class RouteGenerator {
@@ -31,6 +34,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const SigninPage());
       case AppRoutes.signupRoute:
         return MaterialPageRoute(builder: (_) => const SignupPage());
+      case AppRoutes.rootRoute:
+        return MaterialPageRoute(builder: (_) => const RootPage());
 
       default:
         return noRoute();
