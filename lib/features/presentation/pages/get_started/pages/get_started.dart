@@ -5,9 +5,9 @@ import 'package:spotify/core/utils/resources/font_manager.dart';
 import 'package:spotify/core/utils/resources/strings_manager.dart';
 
 import '../../../../../core/utils/constants/assets.dart';
+import '../../../../../core/utils/resources/route_manager.dart';
 import '../../../../../core/utils/resources/values_manager.dart';
 import '../../../../../core/utils/widgets/basic_app_button.dart';
-import '../../choose_mode/pages/choose_mode.dart';
 
 class GetStartedPage extends StatelessWidget {
   const GetStartedPage({super.key});
@@ -82,11 +82,8 @@ class GetStartedPage extends StatelessWidget {
                   BasicAppButton(
                     title: AppStrings.getStarted,
                     onPressed: () {
-                      // TODO: navigate to CHOSE MODE
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) => const ChooseModePage(),
-                        ),
+                      Navigator.of(context).pushReplacementNamed(
+                        AppRoutes.chooseModeRoute,
                       );
                     },
                   ),
