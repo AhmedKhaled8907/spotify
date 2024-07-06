@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:spotify/core/utils/constants/no_route.dart';
-import 'package:spotify/features/presentation/pages/auth/pages/signin.dart';
+import 'package:spotify/features/presentation/pages/auth/pages/signin/signin.dart';
 import 'package:spotify/features/presentation/pages/auth/pages/signin_or_signup.dart';
-import 'package:spotify/features/presentation/pages/auth/pages/signup.dart';
+import 'package:spotify/features/presentation/pages/auth/pages/signup/signup.dart';
 import 'package:spotify/features/presentation/pages/choose_mode/pages/choose_mode.dart';
 import 'package:spotify/features/presentation/pages/get_started/pages/get_started.dart';
 import 'package:spotify/features/presentation/pages/splash/pages/splash.dart';

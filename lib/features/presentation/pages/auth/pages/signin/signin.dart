@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify/core/utils/constants/custom_loading_indicator.dart';
 import 'package:spotify/core/utils/widgets/app_bar/logo_app_bar.dart';
-import 'package:spotify/features/presentation/pages/auth/pages/signup_body.dart';
-import '../../../../../core/utils/resources/route_manager.dart';
-import '../../../bloc/auth_bloc/auth_bloc.dart';
+import 'package:spotify/features/presentation/pages/auth/pages/signin/signin_body.dart';
+import '../../../../../../core/utils/resources/route_manager.dart';
+import '../../../../bloc/auth_bloc/auth_bloc.dart';
 
-class SignupPage extends StatefulWidget {
-  const SignupPage({super.key});
+class SigninPage extends StatefulWidget {
+  const SigninPage({super.key});
 
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  State<SigninPage> createState() => _SigninPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _SigninPageState extends State<SigninPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,9 +21,9 @@ class _SignupPageState extends State<SignupPage> {
       body: MultiBlocListener(
         listeners: [
           BlocListener<AuthBloc, AuthState>(
-            listenWhen: (previous, current) => current is AuthFailure,
             listener: (context, state) {
               if (state is AuthFailure) {
+                ScaffoldMessenger.of(context).clearSnackBars();
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(state.message),
@@ -34,9 +34,8 @@ class _SignupPageState extends State<SignupPage> {
             },
           ),
           BlocListener<AuthBloc, AuthState>(
-            listenWhen: (previous, current) => current is AuthSuccess,
             listener: (context, state) {
-              if (state is AuthSuccess) {
+              if (state is SigninSuccess) {
                 Navigator.of(context).pushNamedAndRemoveUntil(
                   AppRoutes.rootRoute,
                   (route) => false,
@@ -46,13 +45,11 @@ class _SignupPageState extends State<SignupPage> {
           ),
         ],
         child: BlocBuilder<AuthBloc, AuthState>(
-          buildWhen: (previous, current) =>
-              current is AuthSuccess || current is AuthLoading,
           builder: (context, state) {
             if (state is AuthLoading) {
               return const CustomLoadingIndicator();
             }
-            return const SignUpPageBody();
+            return const SigninBodyPage();
           },
         ),
       ),

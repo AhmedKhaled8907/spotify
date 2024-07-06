@@ -1,10 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:spotify/features/data/models/auth/create_user_model.dart';
+import 'package:spotify/features/data/models/auth/user_model.dart';
 
 abstract class AuthFirebaseService {
   Future<Either<String, CreateUserModel>> signUp(CreateUserModel model);
-  Future<Either<String, User>> signIn(String email, String password);
+
+  Future<Either<String, UserModel>> signIn(UserModel model);
 }
 
 class AuthFirebaseServiceImpl implements AuthFirebaseService {
@@ -32,13 +34,13 @@ class AuthFirebaseServiceImpl implements AuthFirebaseService {
   }
 
   @override
-  Future<Either<String, User>> signIn(String email, String password) async {
+  Future<Either<String, UserModel>> signIn(UserModel model) async {
     try {
-      UserCredential userCredential = await firebase.signInWithEmailAndPassword(
-        email: email,
-        password: password,
+      await firebase.signInWithEmailAndPassword(
+        email: model.email,
+        password: model.password,
       );
-      return right(userCredential.user!);
+      return right(model);
     } on FirebaseAuthException catch (e) {
       String message = '';
       if (e.code == 'user-not-found') {
@@ -46,7 +48,7 @@ class AuthFirebaseServiceImpl implements AuthFirebaseService {
       } else if (e.code == 'wrong-password') {
         message = 'Wrong password provided.';
       } else {
-        message = 'An unknown error occurred.';
+        message = e.toString();
       }
       return left(message);
     }

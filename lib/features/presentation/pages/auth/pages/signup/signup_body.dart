@@ -1,13 +1,13 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:spotify/features/presentation/pages/auth/pages/signup_form.dart';
+import 'package:spotify/features/presentation/pages/auth/pages/signup/signup_form.dart';
 
-import '../../../../../core/utils/resources/color_manager.dart';
-import '../../../../../core/utils/resources/route_manager.dart';
-import '../../../../../core/utils/resources/strings_manager.dart';
-import '../../../../../core/utils/resources/values_manager.dart';
-import '../../../../../core/utils/widgets/or_with_dividers.dart';
-import '../../../../../core/utils/widgets/support_text.dart';
+import '../../../../../../core/utils/resources/color_manager.dart';
+import '../../../../../../core/utils/resources/route_manager.dart';
+import '../../../../../../core/utils/resources/strings_manager.dart';
+import '../../../../../../core/utils/resources/values_manager.dart';
+import '../../../../../../core/utils/widgets/or_with_dividers.dart';
+import '../../../../../../core/utils/widgets/support_text.dart';
 
 class SignUpPageBody extends StatelessWidget {
   const SignUpPageBody({super.key});

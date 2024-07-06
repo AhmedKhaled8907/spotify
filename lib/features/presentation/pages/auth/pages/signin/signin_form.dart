@@ -2,27 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify/core/utils/constants/app_validators.dart';
 import 'package:spotify/core/utils/widgets/basic_app_button.dart';
-import 'package:spotify/features/presentation/bloc/auth_bloc/auth_bloc.dart';
 
-import '../../../../../core/utils/resources/strings_manager.dart';
-import '../../../../../core/utils/resources/values_manager.dart';
+import '../../../../../../core/utils/resources/strings_manager.dart';
+import '../../../../../../core/utils/resources/values_manager.dart';
+import '../../../../../../core/utils/widgets/forgot_password_button.dart';
+import '../../../../bloc/auth_bloc/auth_bloc.dart';
 
-class SignUpForm extends StatefulWidget {
-  const SignUpForm({super.key});
+class SignInForm extends StatefulWidget {
+  const SignInForm({super.key});
 
   @override
-  State<SignUpForm> createState() => _SignUpFormState();
+  State<SignInForm> createState() => _SignInFormState();
 }
 
-class _SignUpFormState extends State<SignUpForm> {
+class _SignInFormState extends State<SignInForm> {
 // controllers
   late TextEditingController emailController;
   late TextEditingController passwordController;
-  late TextEditingController fullNameController;
   final _formKey = GlobalKey<FormState>();
   late FocusNode emailFocusNode;
   late FocusNode passwordFocusNode;
-  late FocusNode fullNameFocusNode;
   bool isObscure = true;
 
   @override
@@ -30,20 +29,16 @@ class _SignUpFormState extends State<SignUpForm> {
     super.initState();
     emailController = TextEditingController();
     passwordController = TextEditingController();
-    fullNameController = TextEditingController();
     emailFocusNode = FocusNode();
     passwordFocusNode = FocusNode();
-    fullNameFocusNode = FocusNode();
   }
 
   @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
-    fullNameController.dispose();
     emailFocusNode.dispose();
     passwordFocusNode.dispose();
-    fullNameFocusNode.dispose();
     super.dispose();
   }
 
@@ -53,23 +48,6 @@ class _SignUpFormState extends State<SignUpForm> {
       key: _formKey,
       child: Column(
         children: [
-          // full name form text field
-          TextFormField(
-            controller: fullNameController,
-            focusNode: fullNameFocusNode,
-            keyboardType: TextInputType.text,
-            decoration: const InputDecoration(
-              hintText: AppStrings.fullName,
-            ),
-            validator: (value) {
-              return AppValidators.displayNameValidator(value);
-            },
-            onFieldSubmitted: (value) {
-              FocusScope.of(context).requestFocus(emailFocusNode);
-            },
-          ),
-          const SizedBox(height: AppSize.s16),
-
           // email form text field
           TextFormField(
             controller: emailController,
@@ -109,32 +87,43 @@ class _SignUpFormState extends State<SignUpForm> {
               return AppValidators.passwordValidator(value);
             },
             onFieldSubmitted: (value) {
-              _signupUser(context);
+              _signinUser(context);
             },
           ),
 
-          const SizedBox(height: 20),
+          const SizedBox(height: AppSize.s8),
+
+          // forgot password
+          Align(
+            alignment: Alignment.topLeft,
+            child: ForgotPasswordButton(
+              onPressed: () {},
+            ),
+          ),
+
+          const SizedBox(height: AppSize.s24),
+
+          // register button
           BasicAppButton(
+            title: AppStrings.signIn,
             onPressed: () {
-              _signupUser(context);
+              _signinUser(context);
             },
-            title: AppStrings.createAccount,
           ),
         ],
       ),
     );
   }
 
-  void _signupUser(BuildContext context) {
+  void _signinUser(BuildContext context) {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       FocusScope.of(context).unfocus();
 
       context.read<AuthBloc>().add(
-            SignUpEvent(
+            SigninEvent(
               email: emailController.text,
               password: passwordController.text,
-              fullName: fullNameController.text,
             ),
           );
     }
