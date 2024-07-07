@@ -4,6 +4,7 @@ import 'package:spotify/core/utils/constants/custom_loading_indicator.dart';
 import 'package:spotify/core/utils/widgets/app_bar/basic_app_bar.dart';
 import 'package:spotify/features/presentation/pages/auth/pages/signin/signin_body.dart';
 import '../../../../../../core/utils/resources/route_manager.dart';
+import '../../../../../../core/utils/widgets/app_logo.dart';
 import '../../../../bloc/auth_bloc/auth_bloc.dart';
 
 class SigninPage extends StatefulWidget {
@@ -18,6 +19,7 @@ class _SigninPageState extends State<SigninPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const BasicAppBar(
+        title: AppLogo(),
         hideBack: true,
       ),
       body: MultiBlocListener(

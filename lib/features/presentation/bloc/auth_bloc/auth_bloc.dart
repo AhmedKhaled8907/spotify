@@ -6,8 +6,8 @@ import 'package:spotify/features/data/models/auth/create_user_model.dart';
 import 'package:spotify/features/data/models/auth/user_model.dart';
 
 import '../../../../service_locator.dart';
-import '../../../domain/usecases/signin_usecase.dart';
-import '../../../domain/usecases/signup_usecase.dart';
+import '../../../domain/usecases/auth/signin_usecase.dart';
+import '../../../domain/usecases/auth/signup_usecase.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

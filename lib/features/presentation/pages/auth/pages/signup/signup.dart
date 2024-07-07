@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify/core/utils/constants/custom_loading_indicator.dart';
 import 'package:spotify/core/utils/widgets/app_bar/basic_app_bar.dart';
+import 'package:spotify/core/utils/widgets/app_logo.dart';
 import 'package:spotify/features/presentation/pages/auth/pages/signup/signup_body.dart';
 import '../../../../../../core/utils/resources/route_manager.dart';
 import '../../../../bloc/auth_bloc/auth_bloc.dart';
@@ -18,6 +19,7 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const BasicAppBar(
+        title: AppLogo(),
         hideBack: true,
       ),
       body: MultiBlocListener(

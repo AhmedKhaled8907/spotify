@@ -3,7 +3,7 @@ import 'package:spotify/core/usecases/usecase.dart';
 import 'package:spotify/features/data/models/auth/create_user_model.dart';
 import 'package:spotify/features/data/sources/auth/auth_firebase_service.dart';
 
-import '../../../service_locator.dart';
+import '../../../../service_locator.dart';
 
 class SignupUseCase extends UseCase<Either, CreateUserModel> {
   @override

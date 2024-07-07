@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:spotify/core/utils/widgets/app_bar/basic_app_bar.dart';
 import 'package:spotify/features/presentation/pages/home/pages/home_tabs.dart';
@@ -67,3 +66,7 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+
+
+// TODO: build news songs section & and its bloc too (4h 6m)
