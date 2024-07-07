@@ -1,8 +1,9 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:spotify/core/utils/resources/strings_manager.dart';
 import 'package:spotify/core/utils/resources/values_manager.dart';
-
 import '../../models/song/song_model.dart';
 
 abstract class SongFirebaseService {
@@ -24,11 +25,14 @@ class SongFirebaseServiceImpl implements SongFirebaseService {
 
       for (var element in data.docs) {
         var model = SongModel.fromJson(element.data());
+
         songs.add(model);
       }
       return right(songs);
     } catch (e) {
-      return left('An Error Occurred');
+      // Log the error message for debugging purposes
+      log('Error occurred while fetching new songs: $e');
+      return left('An error occurred: $e');
     }
   }
 }

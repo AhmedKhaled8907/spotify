@@ -4,26 +4,22 @@ import 'package:spotify/core/utils/resources/strings_manager.dart';
 class SongModel {
   final String title;
   final String artist;
-  final num duration;
+  final num time;
   final Timestamp releaseDate;
 
   SongModel({
     required this.title,
     required this.artist,
-    required this.duration,
+    required this.time,
     required this.releaseDate,
   });
 
   factory SongModel.fromJson(Map<String, dynamic> json) {
     return SongModel(
       title: json[AppStrings.songTitle],
-      artist: json[AppStrings.songArtist],
-      duration: json[AppStrings.songDuration],
+      artist: json[AppStrings.songArtist] ?? '',
+      time: json[AppStrings.songTime],
       releaseDate: json[AppStrings.songReleaseDate],
     );
   }
-  
-  
 }
-
-

@@ -25,6 +25,7 @@ class _SigninPageState extends State<SigninPage> {
       body: MultiBlocListener(
         listeners: [
           BlocListener<AuthBloc, AuthState>(
+            listenWhen: (previous, current) => current is AuthFailure,
             listener: (context, state) {
               if (state is AuthFailure) {
                 ScaffoldMessenger.of(context).clearSnackBars();
@@ -38,6 +39,7 @@ class _SigninPageState extends State<SigninPage> {
             },
           ),
           BlocListener<AuthBloc, AuthState>(
+            listenWhen: (previous, current) => current is SigninSuccess,
             listener: (context, state) {
               if (state is SigninSuccess) {
                 Navigator.of(context).pushNamedAndRemoveUntil(
@@ -49,8 +51,6 @@ class _SigninPageState extends State<SigninPage> {
           ),
         ],
         child: BlocBuilder<AuthBloc, AuthState>(
-          buildWhen: (previous, current) =>
-              current is AuthLoading || current is SigninSuccess,
           builder: (context, state) {
             if (state is AuthLoading) {
               return const CustomLoadingIndicator();

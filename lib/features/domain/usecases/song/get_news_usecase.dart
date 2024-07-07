@@ -3,10 +3,11 @@ import 'package:spotify/features/domain/repos/song/song_repo.dart';
 
 import '../../../../core/usecases/usecase.dart';
 import '../../../../service_locator.dart';
+import '../../../data/models/song/song_model.dart';
 
-class GetNewsUsecase extends UseCase<Either, dynamic> {
+class GetNewsSongsUsecase extends UseCase<Either, dynamic> {
   @override
-  Future<Either> call({param}) async {
+  Future<Either<String , List<SongModel>>> call({param}) async {
     return await sl<SongRepo>().getNewSongs();
   }
 }

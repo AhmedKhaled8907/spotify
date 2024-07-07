@@ -36,7 +36,7 @@ Future<void> initServiceLocator() async {
     SongRepoImpl(),
   );
 
-  sl.registerSingleton<GetNewsUsecase>(
-    GetNewsUsecase(),
+  sl.registerSingleton<GetNewsSongsUsecase>(
+    GetNewsSongsUsecase(),
   );
 }

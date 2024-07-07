@@ -33,11 +33,6 @@ class GetStartedPage extends StatelessWidget {
               ),
             ),
 
-            // black overlay
-            Container(
-              color: AppColors.blackWithOp,
-            ),
-
             // content section
             SafeArea(
               child: Padding(

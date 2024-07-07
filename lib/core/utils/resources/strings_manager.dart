@@ -56,9 +56,9 @@ class AppStrings {
   static const String podcasts = 'Podcasts';
 
   // song model
-  static const String songsCollection = 'Songs';
+  static const String songsCollection = 'songs';
   static const String songTitle = 'title';
   static const String songArtist = 'artist';
-  static const String songDuration = 'duration';
+  static const String songTime = 'time';
   static const String songReleaseDate = 'releaseDate';
 }
