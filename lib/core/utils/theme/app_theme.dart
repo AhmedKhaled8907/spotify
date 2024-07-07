@@ -103,6 +103,10 @@ ThemeData lightTheme(BuildContext context) {
 
     // snackbar theme
     snackBarTheme: SnackBarThemeData(
+      insetPadding:
+          const EdgeInsets.symmetric(horizontal: AppPadding.p16).copyWith(
+        bottom: AppPadding.p32,
+      ),
       behavior: SnackBarBehavior.floating,
       backgroundColor: AppColors.darkBackground,
       contentTextStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
@@ -261,11 +265,16 @@ ThemeData darkTheme(BuildContext context) {
     ),
 
     snackBarTheme: SnackBarThemeData(
+      insetPadding:
+          const EdgeInsets.symmetric(horizontal: AppPadding.p16).copyWith(
+        bottom: AppPadding.p32,
+      ),
       backgroundColor: AppColors.grey,
       contentTextStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
             color: AppColors.black,
             fontSize: FontSize.s16,
           ),
+      behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppRadius.r30),
       ),

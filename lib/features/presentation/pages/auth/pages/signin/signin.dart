@@ -45,6 +45,8 @@ class _SigninPageState extends State<SigninPage> {
           ),
         ],
         child: BlocBuilder<AuthBloc, AuthState>(
+          buildWhen: (previous, current) =>
+              current is AuthLoading || current is SigninSuccess,
           builder: (context, state) {
             if (state is AuthLoading) {
               return const CustomLoadingIndicator();

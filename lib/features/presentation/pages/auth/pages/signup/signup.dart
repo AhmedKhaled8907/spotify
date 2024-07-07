@@ -21,6 +21,7 @@ class _SignupPageState extends State<SignupPage> {
       body: MultiBlocListener(
         listeners: [
           BlocListener<AuthBloc, AuthState>(
+            listenWhen: (previous, current) => current is AuthFailure,
             listener: (context, state) {
               if (state is AuthFailure) {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -32,6 +33,7 @@ class _SignupPageState extends State<SignupPage> {
             },
           ),
           BlocListener<AuthBloc, AuthState>(
+            listenWhen: (previous, current) => current is SignupSuccess,
             listener: (context, state) {
               if (state is SignupSuccess) {
                 Navigator.of(context).pushNamedAndRemoveUntil(

@@ -22,7 +22,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     SignUpEvent event,
     Emitter<AuthState> emit,
   ) async {
-    // emit(AuthLoading());
+    emit(AuthLoading());
     var result = await sl<SignupUseCase>().call(
       param: CreateUserModel(
         fullName: event.fullName,
@@ -40,7 +40,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     SigninEvent event,
     Emitter<AuthState> emit,
   ) async {
-    // emit(AuthLoading());
+    emit(AuthLoading());
     var result = await sl<SigninUseCase>().call(
       param: UserModel(
         email: event.email,

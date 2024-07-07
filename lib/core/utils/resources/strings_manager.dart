@@ -43,4 +43,9 @@ class AppStrings {
   static const String dontHaveAccount = 'Don\'t have an account?';
   static const String forgotPassword = 'Forgot Password?';
   static const String registerNow = 'Register Now';
+
+  // firebase
+  static const String firebaseEmail = 'email';
+  static const String firebaseName = 'name';
+  static const String firebaseUsers = 'Users';
 }

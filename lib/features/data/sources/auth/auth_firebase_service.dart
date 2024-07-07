@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:spotify/core/utils/resources/strings_manager.dart';
 import 'package:spotify/features/data/models/auth/create_user_model.dart';
 import 'package:spotify/features/data/models/auth/user_model.dart';
 
@@ -15,10 +17,23 @@ class AuthFirebaseServiceImpl implements AuthFirebaseService {
   @override
   Future<Either<String, CreateUserModel>> signUp(CreateUserModel model) async {
     try {
-      await firebase.createUserWithEmailAndPassword(
+      var data = await firebase.createUserWithEmailAndPassword(
         email: model.email,
         password: model.password,
       );
+      final user = data.user!;
+      final id = user.uid;
+
+      await FirebaseFirestore.instance
+          .collection(AppStrings.firebaseUsers)
+          .doc(id)
+          .set(
+        {
+          AppStrings.firebaseName: model.fullName,
+          AppStrings.firebaseUsers: user.email,
+        },
+      );
+
       return right(model);
     } on FirebaseAuthException catch (e) {
       String message = '';
@@ -40,6 +55,7 @@ class AuthFirebaseServiceImpl implements AuthFirebaseService {
         email: model.email,
         password: model.password,
       );
+
       return right(model);
     } on FirebaseAuthException catch (e) {
       String message = '';
