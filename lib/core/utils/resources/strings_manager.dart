@@ -48,4 +48,11 @@ class AppStrings {
   static const String firebaseEmail = 'email';
   static const String firebaseName = 'name';
   static const String firebaseUsers = 'Users';
+
+  // tab bar
+  static const String news = 'News';
+  static const String videos = 'Videos';
+  static const String artists = 'Artists';
+  static const String podcasts = 'Podcasts';
+
 }

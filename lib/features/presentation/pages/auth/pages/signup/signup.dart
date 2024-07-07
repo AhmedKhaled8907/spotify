@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify/core/utils/constants/custom_loading_indicator.dart';
-import 'package:spotify/core/utils/widgets/app_bar/logo_app_bar.dart';
+import 'package:spotify/core/utils/widgets/app_bar/basic_app_bar.dart';
 import 'package:spotify/features/presentation/pages/auth/pages/signup/signup_body.dart';
 import '../../../../../../core/utils/resources/route_manager.dart';
 import '../../../../bloc/auth_bloc/auth_bloc.dart';
@@ -17,7 +17,9 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const LogoAppBar(),
+      appBar: const BasicAppBar(
+        hideBack: true,
+      ),
       body: MultiBlocListener(
         listeners: [
           BlocListener<AuthBloc, AuthState>(
@@ -37,7 +39,7 @@ class _SignupPageState extends State<SignupPage> {
             listener: (context, state) {
               if (state is SignupSuccess) {
                 Navigator.of(context).pushNamedAndRemoveUntil(
-                  AppRoutes.rootRoute,
+                  AppRoutes.homeRoute,
                   (route) => false,
                 );
               }

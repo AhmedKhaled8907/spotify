@@ -119,6 +119,37 @@ ThemeData lightTheme(BuildContext context) {
       elevation: AppSize.s0,
     ),
 
+    // tab bar theme
+    tabBarTheme: TabBarTheme(
+      labelColor: AppColors.black,
+      labelStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+      unselectedLabelColor: AppColors.medGrey.withOpacity(AppSize.s0_5),
+      unselectedLabelStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+      indicatorSize: TabBarIndicatorSize.label,
+      indicator: const UnderlineTabIndicator(
+        insets: EdgeInsets.only(
+          left: AppPadding.p12,
+          right: AppPadding.p12,
+        ),
+        borderSide: BorderSide(
+          color: AppColors.primary,
+          width: AppSize.s2_5,
+        ),
+      ),
+      dividerColor: AppColors.transparent,
+      tabAlignment: TabAlignment.start,
+      labelPadding: const EdgeInsets.only(
+        right: AppPadding.p32,
+        bottom: AppPadding.p2,
+      ),
+      overlayColor: WidgetStateProperty.all(AppColors.transparent),
+      splashFactory: InkRipple.splashFactory,
+    ),
+
     // text theme
     textTheme: TextTheme(
       // display large
@@ -264,6 +295,7 @@ ThemeData darkTheme(BuildContext context) {
       ),
     ),
 
+    // snackbar theme
     snackBarTheme: SnackBarThemeData(
       insetPadding:
           const EdgeInsets.symmetric(horizontal: AppPadding.p16).copyWith(
@@ -279,6 +311,37 @@ ThemeData darkTheme(BuildContext context) {
         borderRadius: BorderRadius.circular(AppRadius.r30),
       ),
       elevation: AppSize.s0,
+    ),
+
+    // tab bar theme
+    tabBarTheme: TabBarTheme(
+      labelColor: AppColors.white,
+      labelStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+      unselectedLabelColor: AppColors.grey.withOpacity(AppSize.s0_5),
+      unselectedLabelStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+      indicatorSize: TabBarIndicatorSize.label,
+      indicator: const UnderlineTabIndicator(
+        insets: EdgeInsets.only(
+          left: AppPadding.p12,
+          right: AppPadding.p12,
+        ),
+        borderSide: BorderSide(
+          color: AppColors.primary,
+          width: AppSize.s2_5,
+        ),
+      ),
+      dividerColor: AppColors.transparent,
+      tabAlignment: TabAlignment.start,
+      labelPadding: const EdgeInsets.only(
+        right: AppPadding.p32,
+        bottom: AppPadding.p2,
+      ),
+      overlayColor: WidgetStateProperty.all(AppColors.transparent),
+      splashFactory: InkRipple.splashFactory,
     ),
 
     // text theme
