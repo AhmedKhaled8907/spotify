@@ -21,18 +21,19 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            vertical: AppPadding.p24,
             horizontal: AppPadding.p24,
-          ),
-          child: Column(
-            children: [
-              _homeTopCard(),
-              const SizedBox(height: AppSize.s30),
-              const HomeTabs(),
-              const SizedBox(height: AppSize.s48),
-              const Playlist(),
-              const SizedBox(height: AppSize.s30),
-            ],
+          ).copyWith(top: AppPadding.p48),
+          child: SafeArea(
+            child: Column(
+              children: [
+                _homeTopCard(),
+                const SizedBox(height: AppSize.s30),
+                const HomeTabs(),
+                const SizedBox(height: AppSize.s30),
+                const Playlist(),
+                const SizedBox(height: AppSize.s30),
+              ],
+            ),
           ),
         ),
       ),
@@ -47,6 +48,7 @@ class HomePage extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           child: SvgPicture.asset(
             Assets.vectorsHomeTopCard,
+            fit: BoxFit.cover,
           ),
         ),
         Positioned(

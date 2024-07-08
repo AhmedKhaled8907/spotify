@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify/core/utils/constants/custom_loading_indicator.dart';
 import 'package:spotify/core/utils/resources/constants_manager.dart';
+import 'package:spotify/core/utils/resources/route_manager.dart';
 import 'package:spotify/core/utils/resources/values_manager.dart';
 import 'package:spotify/features/presentation/pages/home/bloc/news_songs_cubit/news_songs_cubit.dart';
 import '../../../../data/models/song/song_model.dart';
@@ -55,7 +56,15 @@ class NewsSongs extends StatelessWidget {
         return const SizedBox(width: AppSize.s16);
       },
       itemBuilder: (BuildContext context, int index) {
-        return _songCard(model: songs[index], context);
+        return GestureDetector(
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              AppRoutes.songPlayerRoute,
+              arguments: songs[index],
+            );
+          },
+          child: _songCard(model: songs[index], context),
+        );
       },
     );
   }

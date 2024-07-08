@@ -39,7 +39,6 @@ class AppStrings {
   static const String or = 'Or';
 
   // sign in
-  static const String usernameOrEmail = 'Username or Email';
   static const String dontHaveAccount = 'Don\'t have an account?';
   static const String forgotPassword = 'Forgot Password?';
   static const String registerNow = 'Register Now';
@@ -65,4 +64,7 @@ class AppStrings {
   // playlist item
   static const String playlist = 'Playlist';
   static const String seeMore = 'See More';
+
+  // song player
+  static const String nowPlaying = 'Now Playing';
 }

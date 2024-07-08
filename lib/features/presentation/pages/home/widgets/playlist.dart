@@ -7,6 +7,7 @@ import 'package:spotify/features/data/models/song/song_model.dart';
 import 'package:spotify/features/presentation/pages/home/bloc/playlist_cubit/playlist_cubit.dart';
 
 import '../../../../../core/utils/constants/custom_loading_indicator.dart';
+import '../../../../../core/utils/resources/route_manager.dart';
 import '../../../../../core/utils/resources/strings_manager.dart';
 
 class Playlist extends StatelessWidget {
@@ -86,65 +87,77 @@ class Playlist extends StatelessWidget {
         return const SizedBox(height: AppSize.s16);
       },
       itemBuilder: (BuildContext context, int index) {
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              flex: 2,
-              child: Row(
-                children: [
-                  const PlayIconButton(),
-                  const SizedBox(width: AppSize.s24),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          songs[index].title,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineMedium!
-                              .copyWith(color: AppColors.white),
-                        ),
-                        const SizedBox(height: AppSize.s4),
-                        Text(
-                          songs[index].artist,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge!
-                              .copyWith(color: AppColors.grey),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(width: AppSize.s16),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    songs[index].time.toStringAsFixed(2).replaceAll('.', ':'),
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ),
-                  const Icon(
-                    Icons.favorite_rounded,
-                    color: AppColors.grey,
-                  ),
-                ],
-              ),
-            ),
-          ],
+        return GestureDetector(
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              AppRoutes.songPlayerRoute,
+              arguments: songs[index],
+            );
+          },
+          child: _playlistItem(songs, index, context),
         );
       },
+    );
+  }
+
+  Row _playlistItem(List<SongModel> songs, int index, BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 2,
+          child: Row(
+            children: [
+              const PlayIconButton(),
+              const SizedBox(width: AppSize.s24),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      songs[index].title,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineMedium!
+                          .copyWith(color: AppColors.white),
+                    ),
+                    const SizedBox(height: AppSize.s4),
+                    Text(
+                      songs[index].artist,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleLarge!
+                          .copyWith(color: AppColors.grey),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: AppSize.s16),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                songs[index].time.toStringAsFixed(2).replaceAll('.', ':'),
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              const Icon(
+                Icons.favorite_outline_rounded,
+                color: AppColors.grey,
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
