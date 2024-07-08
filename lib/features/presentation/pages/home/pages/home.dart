@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:spotify/core/utils/widgets/app_bar/basic_app_bar.dart';
 import 'package:spotify/features/presentation/pages/home/pages/home_tabs.dart';
+import 'package:spotify/features/presentation/pages/home/widgets/playlist.dart';
 
 import '../../../../../core/utils/constants/assets.dart';
 import '../../../../../core/utils/resources/values_manager.dart';
@@ -28,6 +29,8 @@ class HomePage extends StatelessWidget {
               _homeTopCard(),
               const SizedBox(height: AppSize.s30),
               const HomeTabs(),
+              const SizedBox(height: AppSize.s48),
+              const Playlist(),
               const SizedBox(height: AppSize.s30),
             ],
           ),
@@ -66,7 +69,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-
-
-// TODO: build news songs section & and its bloc too (4h 6m)

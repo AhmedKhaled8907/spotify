@@ -16,7 +16,7 @@ void main() async {
   await initFirebase();
   await initServiceLocator();
   Bloc.observer = AppBlocObserver();
-  
+    
 
   runApp(const MyApp());
 }

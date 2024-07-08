@@ -9,26 +9,19 @@ class PlayIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      clipBehavior: Clip.none,
-      child: Align(
-        alignment: Alignment.bottomRight,
-        child: Container(
-          height: AppSize.s36,
-          width: AppSize.s36,
-          transform: Matrix4.translationValues(
-            -AppSize.s12,
-            AppSize.s12,
-            AppSize.s0,
-          ),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: context.isDarkMode ? AppColors.darkGrey : AppColors.grey,
-          ),
-          child: Icon(
-            Icons.play_arrow_rounded,
-            color: context.isDarkMode ? AppColors.grey : AppColors.medGrey,
-          ),
+    return Align(
+      alignment: Alignment.bottomRight,
+      child: Container(
+        height: AppSize.s48,
+        width: AppSize.s48,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: context.isDarkMode ? AppColors.darkGrey : AppColors.grey,
+        ),
+        child: Icon(
+          Icons.play_arrow_rounded,
+          size: AppSize.s36,
+          color: context.isDarkMode ? AppColors.grey : AppColors.medGrey,
         ),
       ),
     );

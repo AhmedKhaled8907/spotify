@@ -61,4 +61,8 @@ class AppStrings {
   static const String songArtist = 'artist';
   static const String songTime = 'time';
   static const String songReleaseDate = 'releaseDate';
+
+  // playlist item
+  static const String playlist = 'Playlist';
+  static const String seeMore = 'See More';
 }

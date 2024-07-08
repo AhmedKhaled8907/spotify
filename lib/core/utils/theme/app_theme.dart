@@ -220,6 +220,7 @@ ThemeData darkTheme(BuildContext context) {
 
     // indicator theme
     indicatorColor: AppColors.primary,
+    
 
     // loading indicator theme
     progressIndicatorTheme: const ProgressIndicatorThemeData(

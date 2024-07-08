@@ -7,6 +7,7 @@ import 'package:spotify/features/domain/repos/song/song_repo.dart';
 import 'package:spotify/features/domain/usecases/auth/signin_usecase.dart';
 import 'package:spotify/features/domain/usecases/auth/signup_usecase.dart';
 import 'package:spotify/features/domain/usecases/song/get_news_usecase.dart';
+import 'package:spotify/features/domain/usecases/song/get_playlist_usecase.dart';
 
 import 'features/data/repos/song/song_repo_impl.dart';
 
@@ -38,5 +39,8 @@ Future<void> initServiceLocator() async {
 
   sl.registerSingleton<GetNewsSongsUsecase>(
     GetNewsSongsUsecase(),
+  );
+  sl.registerSingleton<GetPlaylistUsecase>(
+    GetPlaylistUsecase(),
   );
 }

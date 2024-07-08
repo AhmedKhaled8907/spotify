@@ -45,6 +45,8 @@ class _HomeTabsState extends State<HomeTabs> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Column(
       children: [
         TabBar(
@@ -54,7 +56,7 @@ class _HomeTabsState extends State<HomeTabs> with TickerProviderStateMixin {
         ),
         const SizedBox(height: AppSize.s30),
         SizedBox(
-          height: AppSize.s220,
+          height: size.height * 0.25,
           child: TabBarView(
             controller: _tabController,
             children: const [

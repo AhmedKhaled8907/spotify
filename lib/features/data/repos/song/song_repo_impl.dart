@@ -10,4 +10,9 @@ class SongRepoImpl implements SongRepo {
   Future<Either<String, List<SongModel>>> getNewSongs() async {
     return await sl<SongFirebaseService>().getNewSongs();
   }
+
+  @override
+  Future<Either<String, List<SongModel>>> getPlaylist() async {
+    return await sl<SongFirebaseService>().getPlaylist();
+  }
 }
