@@ -25,8 +25,8 @@ class AppRoutes {
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
-      // case AppRoutes.splashRoute:
-      //   return MaterialPageRoute(builder: (_) => const SplashPage());
+      case AppRoutes.splashRoute:
+        return MaterialPageRoute(builder: (_) => const SplashPage());
       case AppRoutes.getStartedRoute:
         return MaterialPageRoute(builder: (_) => const GetStartedPage());
       case AppRoutes.chooseModeRoute:
@@ -37,7 +37,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const SigninPage());
       case AppRoutes.signupRoute:
         return MaterialPageRoute(builder: (_) => const SignupPage());
-      case AppRoutes.splashRoute:
+      case AppRoutes.homeRoute:
         return MaterialPageRoute(builder: (_) => const HomePage());
       case AppRoutes.songPlayerRoute:
         final args = settings.arguments as SongModel;

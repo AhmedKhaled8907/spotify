@@ -67,4 +67,6 @@ class AppStrings {
 
   // song player
   static const String nowPlaying = 'Now Playing';
+  static const String lyrics = 'Lyrics';
+
 }

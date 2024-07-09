@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:spotify/features/data/models/auth/create_user_model.dart';
 import 'package:spotify/features/data/sources/auth/auth_firebase_service.dart';
 
-import '../../../../service_locator.dart';
+import '../../../../core/utils/constants/service_locator.dart';
 import '../../../domain/repos/auth/auth_repo.dart';
 import '../../models/auth/user_model.dart';
 

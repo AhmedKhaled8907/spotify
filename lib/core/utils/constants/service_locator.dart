@@ -9,7 +9,7 @@ import 'package:spotify/features/domain/usecases/auth/signup_usecase.dart';
 import 'package:spotify/features/domain/usecases/song/get_news_usecase.dart';
 import 'package:spotify/features/domain/usecases/song/get_playlist_usecase.dart';
 
-import 'features/data/repos/song/song_repo_impl.dart';
+import '../../../features/data/repos/song/song_repo_impl.dart';
 
 final sl = GetIt.instance;
 

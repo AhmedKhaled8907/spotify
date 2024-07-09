@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify/features/domain/usecases/song/get_news_usecase.dart';
-import 'package:spotify/service_locator.dart';
+import 'package:spotify/core/utils/constants/service_locator.dart';
 
 import '../../../../../data/models/song/song_model.dart';
 

@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify/features/data/models/auth/create_user_model.dart';
 import 'package:spotify/features/data/models/auth/user_model.dart';
 
-import '../../../../service_locator.dart';
+import '../../../../core/utils/constants/service_locator.dart';
 import '../../../domain/usecases/auth/signin_usecase.dart';
 import '../../../domain/usecases/auth/signup_usecase.dart';
 

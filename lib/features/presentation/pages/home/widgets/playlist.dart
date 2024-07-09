@@ -106,7 +106,7 @@ class Playlist extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Expanded(
-          flex: 2,
+          flex: 3,
           child: Row(
             children: [
               const PlayIconButton(),
@@ -119,20 +119,14 @@ class Playlist extends StatelessWidget {
                       songs[index].title,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineMedium!
-                          .copyWith(color: AppColors.white),
+                      style: Theme.of(context).textTheme.headlineMedium,
                     ),
                     const SizedBox(height: AppSize.s4),
                     Text(
                       songs[index].artist,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge!
-                          .copyWith(color: AppColors.grey),
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ],
                 ),
@@ -148,7 +142,7 @@ class Playlist extends StatelessWidget {
             children: [
               Text(
                 songs[index].time.toStringAsFixed(2).replaceAll('.', ':'),
-                style: Theme.of(context).textTheme.headlineMedium,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               const Icon(
                 Icons.favorite_outline_rounded,

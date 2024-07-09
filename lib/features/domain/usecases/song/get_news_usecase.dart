@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:spotify/features/domain/repos/song/song_repo.dart';
 
 import '../../../../core/usecases/usecase.dart';
-import '../../../../service_locator.dart';
+import '../../../../core/utils/constants/service_locator.dart';
 import '../../../data/models/song/song_model.dart';
 
 class GetNewsSongsUsecase extends UseCase<Either, dynamic> {

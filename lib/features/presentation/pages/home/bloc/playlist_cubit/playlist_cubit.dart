@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../../service_locator.dart';
+import '../../../../../../core/utils/constants/service_locator.dart';
 import '../../../../../data/models/song/song_model.dart';
 import '../../../../../domain/usecases/song/get_playlist_usecase.dart';
 

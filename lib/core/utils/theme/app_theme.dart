@@ -24,6 +24,9 @@ ThemeData lightTheme(BuildContext context) {
     // slider theme
     sliderTheme: SliderThemeData(
       overlayShape: SliderComponentShape.noOverlay,
+      activeTrackColor: AppColors.darkGrey,
+      inactiveTrackColor: AppColors.greyWithOp,
+      thumbColor: AppColors.darkGrey,
     ),
 
     // indicator theme
@@ -220,7 +223,6 @@ ThemeData darkTheme(BuildContext context) {
 
     // indicator theme
     indicatorColor: AppColors.primary,
-    
 
     // loading indicator theme
     progressIndicatorTheme: const ProgressIndicatorThemeData(
@@ -229,6 +231,7 @@ ThemeData darkTheme(BuildContext context) {
 
     // slider theme
     sliderTheme: SliderThemeData(
+      overlayShape: SliderComponentShape.noOverlay,
       activeTrackColor: AppColors.lightGrey,
       inactiveTrackColor: AppColors.greyWithOp,
       thumbColor: AppColors.lightGrey,

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:spotify/app_bloc_observer.dart';
+import 'package:spotify/core/utils/constants/app_bloc_observer.dart';
 import 'package:spotify/core/utils/functions/init_hydrated_bloc.dart';
 import 'package:spotify/core/utils/resources/strings_manager.dart';
 import 'package:spotify/core/utils/theme/app_theme.dart';
 import 'package:spotify/features/presentation/bloc/auth_bloc/auth_bloc.dart';
-import 'package:spotify/service_locator.dart';
+import 'package:spotify/core/utils/constants/service_locator.dart';
 
 import 'core/utils/functions/init_firebase.dart';
 import 'core/utils/resources/route_manager.dart';
