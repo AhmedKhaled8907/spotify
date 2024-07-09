@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -11,8 +10,10 @@ class SongPlayerCubit extends Cubit<SongPlayerState> {
 
   SongPlayerCubit() : super(SongPlayerLoading()) {
     audioPlayer.durationStream.listen((duration) {
-      songDuration = duration!;
-      updateSongPlayer();
+      if (duration != null) {
+        songDuration = duration;
+        updateSongPlayer();
+      }
     });
     audioPlayer.positionStream.listen((position) {
       songPosition = position;
@@ -21,20 +22,25 @@ class SongPlayerCubit extends Cubit<SongPlayerState> {
   }
 
   void updateSongPlayer() {
-    emit(SongPlayerSuccess());
+    emit(SongPlayerSuccess(
+      duration: songDuration,
+      position: songPosition,
+      isPlaying: audioPlayer.playing,
+    ));
   }
 
   Future<void> loadPlayer(String url) async {
     try {
+      emit(SongPlayerLoading());
       await audioPlayer.setUrl(url);
       await audioPlayer.play();
-      emit(SongPlayerSuccess());
-    } on Exception catch (e) {
-      emit(
-        SongPlayerFailure(
-          message: e.toString(),
-        ),
-      );
+      emit(SongPlayerSuccess(
+        duration: songDuration,
+        position: songPosition,
+        isPlaying: audioPlayer.playing,
+      ));
+    } catch (e) {
+      emit(SongPlayerFailure(message: e.toString()));
     }
   }
 
@@ -49,7 +55,11 @@ class SongPlayerCubit extends Cubit<SongPlayerState> {
     } else {
       await audioPlayer.play();
     }
-    emit(SongPlayerSuccess());
+    emit(SongPlayerSuccess(
+      duration: songDuration,
+      position: songPosition,
+      isPlaying: audioPlayer.playing,
+    ));
   }
 
   @override

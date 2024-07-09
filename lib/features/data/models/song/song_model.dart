@@ -6,12 +6,16 @@ class SongModel {
   final String artist;
   final num time;
   final Timestamp releaseDate;
+  bool? isFavorite;
+  String? songId;
 
   SongModel({
     required this.title,
     required this.artist,
     required this.time,
     required this.releaseDate,
+    this.isFavorite,
+    this.songId,
   });
 
   factory SongModel.fromJson(Map<String, dynamic> json) {

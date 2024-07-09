@@ -4,8 +4,10 @@ import 'package:spotify/core/utils/constants/app_bloc_observer.dart';
 import 'package:spotify/core/utils/functions/init_hydrated_bloc.dart';
 import 'package:spotify/core/utils/resources/strings_manager.dart';
 import 'package:spotify/core/utils/theme/app_theme.dart';
+import 'package:spotify/core/utils/widgets/favorite_button/favorite_button_cubit/favorite_button_cubit.dart';
 import 'package:spotify/features/presentation/bloc/auth_bloc/auth_bloc.dart';
 import 'package:spotify/core/utils/constants/service_locator.dart';
+import 'package:spotify/features/presentation/pages/song_player.dart/song_player_cubit/song_player_cubit.dart';
 
 import 'core/utils/functions/init_firebase.dart';
 import 'core/utils/resources/route_manager.dart';
@@ -16,7 +18,6 @@ void main() async {
   await initFirebase();
   await initServiceLocator();
   Bloc.observer = AppBlocObserver();
-    
 
   runApp(const MyApp());
 }
@@ -33,6 +34,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => AuthBloc(),
+        ),
+        BlocProvider(
+          create: (context) => sl<SongPlayerCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => sl<FavoriteButtonCubit>(),
         ),
       ],
       child: BlocBuilder<ThemeCubit, ThemeMode>(

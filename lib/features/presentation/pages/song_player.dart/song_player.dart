@@ -7,13 +7,14 @@ import 'package:spotify/core/utils/extensions/is_dark_mode.dart';
 import 'package:spotify/core/utils/resources/strings_manager.dart';
 import 'package:spotify/core/utils/resources/values_manager.dart';
 import 'package:spotify/core/utils/widgets/app_bar/basic_app_bar.dart';
+import 'package:spotify/core/utils/widgets/favorite_button/favorite_button.dart';
 import 'package:spotify/features/data/models/song/song_model.dart';
 import 'package:spotify/features/presentation/pages/song_player.dart/song_player_cubit/song_player_cubit.dart';
 
 import '../../../../core/utils/resources/color_manager.dart';
 import '../../../../core/utils/resources/constants_manager.dart';
 
-class SongPlayer extends StatelessWidget {
+class SongPlayer extends StatefulWidget {
   const SongPlayer({
     super.key,
     required this.model,
@@ -22,25 +23,33 @@ class SongPlayer extends StatelessWidget {
   final SongModel model;
 
   @override
-  Widget build(BuildContext context) {
-    final songTitle = AppUrl.fireStoreSong(model.title);
+  State<SongPlayer> createState() => _SongPlayerState();
+}
 
-    return BlocProvider(
-      create: (context) => SongPlayerCubit()..loadPlayer(songTitle),
-      child: Scaffold(
-        appBar: BasicAppBar(
-          title: Text(
-            AppStrings.nowPlaying,
-            style: Theme.of(context).textTheme.headlineLarge,
-          ),
-          action: IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.more_vert),
-            color: context.isDarkMode ? AppColors.white : AppColors.black,
-          ),
+class _SongPlayerState extends State<SongPlayer> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<SongPlayerCubit>().loadPlayer(
+          AppUrl.fireStoreSong(widget.model.title),
+        );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: BasicAppBar(
+        title: Text(
+          AppStrings.nowPlaying,
+          style: Theme.of(context).textTheme.headlineLarge,
         ),
-        body: _songPlayerItem(context),
+        action: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.more_vert),
+          color: context.isDarkMode ? AppColors.white : AppColors.black,
+        ),
       ),
+      body: _songPlayerItem(context),
     );
   }
 
@@ -104,22 +113,18 @@ class SongPlayer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              model.title,
+              widget.model.title,
               style: Theme.of(context).textTheme.displayMedium,
             ),
-            IconButton(
-              padding: EdgeInsets.zero,
-              onPressed: () {},
-              icon: const Icon(
-                Icons.favorite_outline_rounded,
-                size: AppSize.s36,
-              ),
-              color: AppColors.grey,
+            FavoriteButton(
+              isFavorite: widget.model.isFavorite ?? false,
+              songId: widget.model.songId!,
+              size: AppSize.s36,
             ),
           ],
         ),
         Text(
-          model.artist,
+          widget.model.artist,
           style: Theme.of(context).textTheme.displaySmall!.copyWith(
                 fontWeight: FontWeight.normal,
                 color: context.isDarkMode ? AppColors.grey : AppColors.black,
@@ -130,7 +135,7 @@ class SongPlayer extends StatelessWidget {
   }
 
   Container _songCover(BuildContext context) {
-    final imageUrl = AppUrl.fireStoreImage(model.artist);
+    final imageUrl = AppUrl.fireStoreImage(widget.model.artist);
     Size size = MediaQuery.of(context).size;
 
     return Container(
@@ -162,7 +167,7 @@ class SongPlayer extends StatelessWidget {
                   cubit.seekTo(value);
                 },
                 value: cubit.songPosition.inSeconds.toDouble(),
-                min: 0.0,
+                min: AppSize.s0,
                 max: cubit.songDuration.inSeconds.toDouble(),
               ),
               Padding(

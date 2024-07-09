@@ -1,18 +1,22 @@
 part of 'song_player_cubit.dart';
 
+abstract class SongPlayerState {}
 
-@immutable
-sealed class SongPlayerState {}
+class SongPlayerLoading extends SongPlayerState {}
 
-final class SongPlayerInitial extends SongPlayerState {}
+class SongPlayerSuccess extends SongPlayerState {
+  final Duration duration;
+  final Duration position;
+  final bool isPlaying;
 
-final class SongPlayerLoading extends SongPlayerState {}
-
-final class SongPlayerSuccess extends SongPlayerState {
-  
+  SongPlayerSuccess({
+    required this.duration,
+    required this.position,
+    required this.isPlaying,
+  });
 }
 
-final class SongPlayerFailure extends SongPlayerState {
+class SongPlayerFailure extends SongPlayerState {
   final String message;
 
   SongPlayerFailure({required this.message});

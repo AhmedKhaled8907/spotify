@@ -47,6 +47,10 @@ class AppStrings {
   static const String firebaseEmail = 'email';
   static const String firebaseName = 'name';
   static const String firebaseUsers = 'Users';
+  static const String firebaseFavorites = 'Favorites';
+  static const String firebaseSongId = 'songId';
+  static const String firebaseAddedAt = 'addedAt';
+
 
   // tab bar
   static const String news = 'News';
@@ -60,6 +64,7 @@ class AppStrings {
   static const String songArtist = 'artist';
   static const String songTime = 'time';
   static const String songReleaseDate = 'releaseDate';
+  static const String isFavorite = 'isFavorite';
 
   // playlist item
   static const String playlist = 'Playlist';

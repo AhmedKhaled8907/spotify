@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:spotify/core/utils/resources/color_manager.dart';
 import 'package:spotify/core/utils/resources/values_manager.dart';
+import 'package:spotify/core/utils/widgets/favorite_button/favorite_button.dart';
 import 'package:spotify/core/utils/widgets/play_icon_button.dart';
 import 'package:spotify/features/data/models/song/song_model.dart';
 import 'package:spotify/features/presentation/pages/home/bloc/playlist_cubit/playlist_cubit.dart';
@@ -87,7 +87,8 @@ class Playlist extends StatelessWidget {
         return const SizedBox(height: AppSize.s16);
       },
       itemBuilder: (BuildContext context, int index) {
-        return GestureDetector(
+        return InkWell(
+          borderRadius: BorderRadius.circular(AppSize.s16),
           onTap: () {
             Navigator.of(context).pushNamed(
               AppRoutes.songPlayerRoute,
@@ -106,7 +107,7 @@ class Playlist extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Expanded(
-          flex: 3,
+          flex: AppSize.s3.toInt(),
           child: Row(
             children: [
               const PlayIconButton(),
@@ -118,14 +119,14 @@ class Playlist extends StatelessWidget {
                     Text(
                       songs[index].title,
                       overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
+                      maxLines: AppSize.s1.toInt(),
                       style: Theme.of(context).textTheme.headlineMedium,
                     ),
                     const SizedBox(height: AppSize.s4),
                     Text(
                       songs[index].artist,
                       overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
+                      maxLines: AppSize.s1.toInt(),
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ],
@@ -141,12 +142,15 @@ class Playlist extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                songs[index].time.toStringAsFixed(2).replaceAll('.', ':'),
+                songs[index]
+                    .time
+                    .toStringAsFixed(AppSelectedIndex.i2)
+                    .replaceAll('.', ':'),
                 style: Theme.of(context).textTheme.titleLarge,
               ),
-              const Icon(
-                Icons.favorite_outline_rounded,
-                color: AppColors.grey,
+              FavoriteButton(
+                isFavorite: songs[index].isFavorite ?? false,
+                songId: songs[index].songId!,
               ),
             ],
           ),
