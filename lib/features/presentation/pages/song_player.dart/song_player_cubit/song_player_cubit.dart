@@ -7,6 +7,7 @@ class SongPlayerCubit extends Cubit<SongPlayerState> {
   AudioPlayer audioPlayer = AudioPlayer();
   Duration songDuration = Duration.zero;
   Duration songPosition = Duration.zero;
+  String? currentUrl; // Add this variable to track the current URL
 
   SongPlayerCubit() : super(SongPlayerLoading()) {
     audioPlayer.durationStream.listen((duration) {
@@ -31,8 +32,14 @@ class SongPlayerCubit extends Cubit<SongPlayerState> {
 
   Future<void> loadPlayer(String url) async {
     try {
+      // Check if the URL is the same as the current URL and if the player is already playing
+      if (currentUrl == url && audioPlayer.playing) {
+        return; // Do nothing if the same song is already playing
+      }
+
       emit(SongPlayerLoading());
       await audioPlayer.setUrl(url);
+      currentUrl = url; // Update the current URL
       await audioPlayer.play();
       emit(SongPlayerSuccess(
         duration: songDuration,
