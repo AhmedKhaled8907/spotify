@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:spotify/core/utils/constants/assets.dart';
 import 'package:spotify/core/utils/resources/strings_manager.dart';
 import 'package:spotify/features/data/models/auth/create_user_model.dart';
 import 'package:spotify/features/data/models/auth/user_model.dart';
@@ -9,6 +10,7 @@ abstract class AuthFirebaseService {
   Future<Either<String, CreateUserModel>> signUp(CreateUserModel model);
 
   Future<Either<String, UserModel>> signIn(UserModel model);
+  Future<Either<String, UserModel>> getUser();
 }
 
 class AuthFirebaseServiceImpl implements AuthFirebaseService {
@@ -30,7 +32,7 @@ class AuthFirebaseServiceImpl implements AuthFirebaseService {
           .set(
         {
           AppStrings.firebaseName: model.fullName,
-          AppStrings.firebaseUsers: user.email,
+          AppStrings.firebaseEmail: user.email,
         },
       );
 
@@ -53,7 +55,7 @@ class AuthFirebaseServiceImpl implements AuthFirebaseService {
     try {
       await firebase.signInWithEmailAndPassword(
         email: model.email,
-        password: model.password,
+        password: model.password!,
       );
 
       return right(model);
@@ -67,6 +69,23 @@ class AuthFirebaseServiceImpl implements AuthFirebaseService {
         message = e.toString();
       }
       return left(message);
+    }
+  }
+
+  @override
+  Future<Either<String, UserModel>> getUser() async {
+    try {
+      var user = await FirebaseFirestore.instance
+          .collection(AppStrings.firebaseUsers)
+          .doc(firebase.currentUser!.uid)
+          .get();
+
+      UserModel model = UserModel.fromJson(user.data()!);
+      model.image = FirebaseAuth.instance.currentUser?.photoURL ??
+          Assets.imagesProfilePic;
+      return right(model);
+    } catch (e) {
+      return left(e.toString());
     }
   }
 }

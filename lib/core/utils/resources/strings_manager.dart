@@ -74,4 +74,8 @@ class AppStrings {
   static const String nowPlaying = 'Now Playing';
   static const String lyrics = 'Lyrics';
 
+  // profile page
+  static const String profile = 'Profile';
+  static const String photoUrl = 'photoUrl';
+
 }

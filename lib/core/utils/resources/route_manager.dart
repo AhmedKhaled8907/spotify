@@ -6,6 +6,7 @@ import 'package:spotify/features/presentation/pages/auth/pages/signin_or_signup.
 import 'package:spotify/features/presentation/pages/auth/pages/signup/signup.dart';
 import 'package:spotify/features/presentation/pages/choose_mode/pages/choose_mode.dart';
 import 'package:spotify/features/presentation/pages/get_started/pages/get_started.dart';
+import 'package:spotify/features/presentation/pages/profile/pages/profile.dart';
 import 'package:spotify/features/presentation/pages/song_player.dart/song_player.dart';
 import 'package:spotify/features/presentation/pages/splash/pages/splash.dart';
 
@@ -20,6 +21,7 @@ class AppRoutes {
   static const String signupRoute = "/signup";
   static const String homeRoute = "/home";
   static const String songPlayerRoute = "/songPlayer";
+  static const String profileRoute = "/profile";
 }
 
 class RouteGenerator {
@@ -42,6 +44,8 @@ class RouteGenerator {
       case AppRoutes.songPlayerRoute:
         final args = settings.arguments as SongModel;
         return MaterialPageRoute(builder: (_) => SongPlayer(model: args));
+        case AppRoutes.profileRoute:
+        return MaterialPageRoute(builder: (_) => const ProfilePage());
 
       default:
         return noRoute();

@@ -5,6 +5,7 @@ import 'package:spotify/features/data/sources/auth/auth_firebase_service.dart';
 import 'package:spotify/features/data/sources/song/song_firebase_service.dart';
 import 'package:spotify/features/domain/repos/auth/auth_repo.dart';
 import 'package:spotify/features/domain/repos/song/song_repo.dart';
+import 'package:spotify/features/domain/usecases/auth/get_user_usecase.dart';
 import 'package:spotify/features/domain/usecases/auth/signin_usecase.dart';
 import 'package:spotify/features/domain/usecases/auth/signup_usecase.dart';
 import 'package:spotify/features/domain/usecases/song/add_or_remove_favorite_songs_usecase.dart';
@@ -52,6 +53,9 @@ Future<void> initServiceLocator() async {
   );
   sl.registerLazySingleton<IsFavoriteSongUsecase>(
     () => IsFavoriteSongUsecase(),
+  );
+   sl.registerLazySingleton<GetUserUsecase>(
+    () => GetUserUsecase(),
   );
 
     sl.registerFactory(() => SongPlayerCubit());

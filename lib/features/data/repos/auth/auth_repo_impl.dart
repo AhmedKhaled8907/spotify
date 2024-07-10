@@ -16,4 +16,9 @@ class AuthRepoImpl implements AuthRepo {
   Future<Either<String, CreateUserModel>> signUp(CreateUserModel model) async {
     return await sl<AuthFirebaseService>().signUp(model);
   }
+
+  @override
+  Future<Either> getUser() async {
+    return await sl<AuthFirebaseService>().getUser();
+  }
 }

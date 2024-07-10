@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:spotify/core/utils/widgets/app_bar/basic_app_bar.dart';
+import 'package:spotify/core/utils/extensions/is_dark_mode.dart';
 import 'package:spotify/features/presentation/pages/home/pages/home_tabs.dart';
 import 'package:spotify/features/presentation/pages/home/widgets/playlist.dart';
 
 import '../../../../../core/utils/constants/assets.dart';
+import '../../../../../core/utils/resources/color_manager.dart';
+import '../../../../../core/utils/resources/route_manager.dart';
 import '../../../../../core/utils/resources/values_manager.dart';
 import '../../../../../core/utils/widgets/app_logo.dart';
 
@@ -14,10 +16,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const BasicAppBar(
-        title: AppLogo(),
-        hideBack: true,
-      ),
+      appBar: _buildAppBar(context),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -37,6 +36,28 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  AppBar _buildAppBar(BuildContext context) {
+    return AppBar(
+      leading: GestureDetector(
+        onTap: () => Navigator.pushNamed(context, AppRoutes.profileRoute),
+        child: Padding(
+          padding: const EdgeInsets.only(left: AppPadding.p8),
+          child: Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: context.isDarkMode ? AppColors.darkGrey : AppColors.grey,
+            ),
+            child: Icon(
+              Icons.person,
+              color: context.isDarkMode ? AppColors.grey : AppColors.medGrey,
+            ),
+          ),
+        ),
+      ),
+      title: const AppLogo(),
     );
   }
 

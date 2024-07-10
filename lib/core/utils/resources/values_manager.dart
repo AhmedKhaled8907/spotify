@@ -140,6 +140,7 @@ class AppRadius {
   static const double r30 = 30.0;
   static const double r32 = 32.0;
   static const double r50 = 50.0;
+  static const double r75 = 75.0;
 }
 
 class AppSelectedIndex {
