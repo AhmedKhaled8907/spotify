@@ -27,7 +27,7 @@ class AuthFirebaseServiceImpl implements AuthFirebaseService {
       final id = user.uid;
 
       await FirebaseFirestore.instance
-          .collection(AppStrings.firebaseUsers)
+          .collection(AppStrings.usersCollection)
           .doc(id)
           .set(
         {
@@ -76,7 +76,7 @@ class AuthFirebaseServiceImpl implements AuthFirebaseService {
   Future<Either<String, UserModel>> getUser() async {
     try {
       var user = await FirebaseFirestore.instance
-          .collection(AppStrings.firebaseUsers)
+          .collection(AppStrings.usersCollection)
           .doc(firebase.currentUser!.uid)
           .get();
 

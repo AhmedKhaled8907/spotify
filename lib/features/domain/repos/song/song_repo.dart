@@ -9,4 +9,5 @@ abstract class SongRepo {
     String songId,
   );
   Future<bool> isFavoriteSong(String songId);
+  Future<Either<String, List<SongModel>>> getUserFavoriteSongs();
 }

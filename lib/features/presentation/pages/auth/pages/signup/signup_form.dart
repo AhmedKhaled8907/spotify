@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify/core/utils/constants/app_validators.dart';
 import 'package:spotify/core/utils/widgets/basic_app_button.dart';
-import 'package:spotify/features/presentation/bloc/auth_bloc/auth_bloc.dart';
+import 'package:spotify/features/presentation/pages/auth/bloc/auth_bloc/auth_bloc.dart';
 
 import '../../../../../../core/utils/resources/strings_manager.dart';
 import '../../../../../../core/utils/resources/values_manager.dart';

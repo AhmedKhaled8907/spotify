@@ -21,6 +21,7 @@ class SongModel {
   factory SongModel.fromJson(Map<String, dynamic> json) {
     return SongModel(
       title: json[AppStrings.songTitle],
+      songId: json[AppStrings.firebaseSongId],
       artist: json[AppStrings.songArtist] ?? '',
       time: json[AppStrings.songTime],
       releaseDate: json[AppStrings.songReleaseDate],

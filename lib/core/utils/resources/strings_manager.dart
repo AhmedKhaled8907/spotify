@@ -46,11 +46,11 @@ class AppStrings {
   // firebase
   static const String firebaseEmail = 'email';
   static const String firebaseName = 'name';
-  static const String firebaseUsers = 'Users';
-  static const String firebaseFavorites = 'Favorites';
   static const String firebaseSongId = 'songId';
   static const String firebaseAddedAt = 'addedAt';
-
+  static const String favoritesCollection = 'Favorites';
+  static const String usersCollection = 'Users';
+  static const String songsCollection = 'songs';
 
   // tab bar
   static const String news = 'News';
@@ -59,7 +59,6 @@ class AppStrings {
   static const String podcasts = 'Podcasts';
 
   // song model
-  static const String songsCollection = 'songs';
   static const String songTitle = 'title';
   static const String songArtist = 'artist';
   static const String songTime = 'time';
@@ -77,5 +76,5 @@ class AppStrings {
   // profile page
   static const String profile = 'Profile';
   static const String photoUrl = 'photoUrl';
-
+  static const String favoriteSongs = 'Favorite Songs';
 }

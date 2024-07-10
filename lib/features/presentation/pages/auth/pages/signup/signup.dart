@@ -5,7 +5,7 @@ import 'package:spotify/core/utils/widgets/app_bar/basic_app_bar.dart';
 import 'package:spotify/core/utils/widgets/app_logo.dart';
 import 'package:spotify/features/presentation/pages/auth/pages/signup/signup_body.dart';
 import '../../../../../../core/utils/resources/route_manager.dart';
-import '../../../../bloc/auth_bloc/auth_bloc.dart';
+import '../../bloc/auth_bloc/auth_bloc.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});

@@ -25,4 +25,11 @@ class SongRepoImpl implements SongRepo {
   Future<bool> isFavoriteSong(String songId) async {
     return await sl<SongFirebaseService>().isFavoriteSong(songId);
   }
+  
+  @override
+  Future<Either<String, List<SongModel>>> getUserFavoriteSongs()async {
+           return await sl<SongFirebaseService>().getUserFavoriteSongs();
+
+
+  }
 }

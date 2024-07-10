@@ -6,7 +6,7 @@ import 'package:spotify/core/utils/widgets/basic_app_button.dart';
 import '../../../../../../core/utils/resources/strings_manager.dart';
 import '../../../../../../core/utils/resources/values_manager.dart';
 import '../../../../../../core/utils/widgets/forgot_password_button.dart';
-import '../../../../bloc/auth_bloc/auth_bloc.dart';
+import '../../bloc/auth_bloc/auth_bloc.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({super.key});

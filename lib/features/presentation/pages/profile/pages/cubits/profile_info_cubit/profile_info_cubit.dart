@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify/core/utils/constants/service_locator.dart';
 import 'package:spotify/features/data/models/auth/user_model.dart';
 
-import '../../../../domain/usecases/auth/get_user_usecase.dart';
+import '../../../../../../domain/usecases/auth/get_user_usecase.dart';
 
 part 'profile_info_state.dart';
 

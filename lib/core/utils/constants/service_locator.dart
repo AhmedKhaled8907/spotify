@@ -11,6 +11,7 @@ import 'package:spotify/features/domain/usecases/auth/signup_usecase.dart';
 import 'package:spotify/features/domain/usecases/song/add_or_remove_favorite_songs_usecase.dart';
 import 'package:spotify/features/domain/usecases/song/get_news_usecase.dart';
 import 'package:spotify/features/domain/usecases/song/get_playlist_usecase.dart';
+import 'package:spotify/features/domain/usecases/song/get_user_favorite_songs_usecase.dart';
 import 'package:spotify/features/domain/usecases/song/is_favorite_song_usecase.dart';
 
 import '../../../features/data/repos/song/song_repo_impl.dart';
@@ -56,6 +57,9 @@ Future<void> initServiceLocator() async {
   );
    sl.registerLazySingleton<GetUserUsecase>(
     () => GetUserUsecase(),
+  );
+  sl.registerLazySingleton<GetUserFavoriteSongsUsecase>(
+    () => GetUserFavoriteSongsUsecase(),
   );
 
     sl.registerFactory(() => SongPlayerCubit());

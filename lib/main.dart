@@ -5,7 +5,7 @@ import 'package:spotify/core/utils/functions/init_hydrated_bloc.dart';
 import 'package:spotify/core/utils/resources/strings_manager.dart';
 import 'package:spotify/core/utils/theme/app_theme.dart';
 import 'package:spotify/core/utils/widgets/favorite_button/favorite_button_cubit/favorite_button_cubit.dart';
-import 'package:spotify/features/presentation/bloc/auth_bloc/auth_bloc.dart';
+import 'package:spotify/features/presentation/pages/auth/bloc/auth_bloc/auth_bloc.dart';
 import 'package:spotify/core/utils/constants/service_locator.dart';
 import 'package:spotify/features/presentation/pages/song_player.dart/song_player_cubit/song_player_cubit.dart';
 

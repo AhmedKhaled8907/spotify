@@ -16,6 +16,7 @@ abstract class SongFirebaseService {
     String songId,
   );
   Future<bool> isFavoriteSong(String songId);
+  Future<Either<String, List<SongModel>>> getUserFavoriteSongs();
 }
 
 class SongFirebaseServiceImpl implements SongFirebaseService {
@@ -91,9 +92,9 @@ class SongFirebaseServiceImpl implements SongFirebaseService {
     try {
       // get the songs in favorite with the same songId
       QuerySnapshot favoriteSongs = await firestore
-          .collection(AppStrings.firebaseUsers)
+          .collection(AppStrings.usersCollection)
           .doc(uid)
-          .collection(AppStrings.firebaseFavorites)
+          .collection(AppStrings.favoritesCollection)
           .where(AppStrings.firebaseSongId, isEqualTo: songId)
           .get();
 
@@ -106,9 +107,9 @@ class SongFirebaseServiceImpl implements SongFirebaseService {
       } else {
         // if there no songs in favorite then add it
         await firestore
-            .collection(AppStrings.firebaseUsers)
+            .collection(AppStrings.usersCollection)
             .doc(uid)
-            .collection(AppStrings.firebaseFavorites)
+            .collection(AppStrings.favoritesCollection)
             .add(
           {
             AppStrings.firebaseSongId: songId,
@@ -132,9 +133,9 @@ class SongFirebaseServiceImpl implements SongFirebaseService {
     try {
       // get the songs in favorite with the same songId
       QuerySnapshot favoriteSongs = await firestore
-          .collection(AppStrings.firebaseUsers)
+          .collection(AppStrings.usersCollection)
           .doc(uid)
-          .collection(AppStrings.firebaseFavorites)
+          .collection(AppStrings.favoritesCollection)
           .where(AppStrings.firebaseSongId, isEqualTo: songId)
           .get();
 
@@ -145,6 +146,47 @@ class SongFirebaseServiceImpl implements SongFirebaseService {
       }
     } catch (e) {
       return false;
+    }
+  }
+
+  @override
+  Future<Either<String, List<SongModel>>> getUserFavoriteSongs() async {
+    var user = auth.currentUser;
+    var uid = user!.uid;
+    List<SongModel> favoriteSongs = [];
+
+    try {
+      QuerySnapshot favoriteSnapShots = await firestore
+          .collection(AppStrings.usersCollection)
+          .doc(uid)
+          .collection(AppStrings.favoritesCollection)
+          .get();
+
+      for (var element in favoriteSnapShots.docs) {
+        var songId = element[AppStrings.firebaseSongId];
+        var song = await firestore
+            .collection(AppStrings.songsCollection)
+            .doc(songId)
+            .get();
+
+        if (song.exists) {
+          SongModel songModel = SongModel.fromJson(song.data()!);
+          songModel.songId = song.id;
+          songModel.isFavorite = true;
+          favoriteSongs.add(songModel);
+        }
+
+        if (song.exists == false) {
+          SongModel songModel = SongModel.fromJson(song.data()!);
+          songModel.songId = song.id;
+          songModel.isFavorite = false;
+          favoriteSongs.remove(songModel);
+        }
+      }
+
+      return right(favoriteSongs);
+    } catch (e) {
+      return left('An error occurred: $e');
     }
   }
 }
